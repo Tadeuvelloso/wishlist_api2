@@ -3,7 +3,7 @@ import { userSchema } from "../schemas/userSchemas.js";
 import { User } from "../protocols/User.js";
 
 
-export function checkMovieObj (req: Request, res: Response, next: NextFunction) {
+export function checkUserObj (req: Request, res: Response, next: NextFunction) {
     const user = req.body as User;
 
 
