@@ -7,7 +7,7 @@
 >/ 2- configurar o arquivo .env de acordo com os dados do seu banco de dados local.
 >/ 3- npm run prisma:seed 
 
-##### Documentaç
+##### Documentação das rotas:
 
 >get("/movies")
 ##### A rota que lista todos os filmes, series ou jogos.
