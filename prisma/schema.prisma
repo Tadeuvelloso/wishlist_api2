@@ -16,7 +16,7 @@ model movies {
   watched     Boolean
   entity      String
   user        users   @relation(fields: [userid], references: [id])
-  userid      Int     @unique
+  userid      Int     
 }
 
 model users {

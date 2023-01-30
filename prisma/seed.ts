@@ -33,7 +33,7 @@ async function main() {
             "watched": false,
             "entity": "filme",
             "userid": 1
-            }
+            },
         ]
     })
 }
