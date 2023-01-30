@@ -3,7 +3,7 @@ import { User } from "../protocols/User.js";
 import { newUser, findUserByEmail } from "../repository/userRepository.js";
 import { newSession, deleteSession, findSession } from "../repository/sessionRepository.js";
 
-async function signUp (req: Request, res: Response) {
+export async function signUp (req: Request, res: Response) {
     const user = res.locals.user as User;
 
     try{
@@ -14,7 +14,7 @@ async function signUp (req: Request, res: Response) {
     }
 }
 
-async function signIn (req: Request, res: Response)  {
+export async function signIn (req: Request, res: Response)  {
     const user = res.locals.user as User;
 
     try{
