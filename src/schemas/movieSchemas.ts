@@ -6,5 +6,6 @@ export const movieSchema = Joi.object({
 	platform: Joi.string().required(),
 	description: [Joi.string().optional(), Joi.allow(null)],
 	watched: Joi.boolean().required(),
-	entity: Joi.string().required()
+	entity: Joi.string().required(),
+	userid: Joi.number().required()
 })

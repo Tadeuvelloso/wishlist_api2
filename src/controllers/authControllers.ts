@@ -20,17 +20,23 @@ export async function signIn (req: Request, res: Response)  {
     try{
         const findUserInDb = await findUserByEmail(user.email);
 
+        
         if(user.password !== findUserInDb.password){
-            return res.sendStatus(401)
+            res.sendStatus(401);
+            return 
         }
-
+        
         const checkSessionInDb = await findSession(findUserInDb.id);
 
         if(!checkSessionInDb){
             await newSession(findUserInDb.id);
         }
-
-        res.send(findUserInDb.id);
+        
+        const obj = {
+            userid: findUserInDb.id
+        }
+        
+        res.send(obj);
     } catch (error) {
         return res.status(500).send(error.message)
     }

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {findAllMovies, insertMovie, updateMovie, findMovieByGenre, deleteMovieById} from "../repository/moviesRepository.js"
+import {findAllMovies, insertMovie, updateMovie, deleteMovieById, findAllMoviesById} from "../repository/moviesRepository.js"
 import { Movie } from "../protocols/Movie.js";
 
 export async function getAllMovies (req: Request, res: Response){
@@ -31,24 +31,24 @@ export async function updateStatusMovie (req: Request, res: Response) {
     }
 }
 
-export async function getMovieByGenre (req: Request, res: Response) {
-    const { genre } = req.params;
-
-    try {
-        const moviesWithGenre = await findMovieByGenre(genre);
-        res.send(moviesWithGenre);
-    } catch(error){
-        return res.status(500).send(error.message)
-    }
-
-}
 
 export async function deleteMovie (req: Request, res: Response) {
     const { id } = req.params;
 
     try {
         await deleteMovieById(Number(id));
-        res.status(201).send(`"Filme excluido com sucesso!`);
+        res.status(201).send(`Filme excluido com sucesso!`);
+    } catch(error){
+        return res.status(500).send(error.message)
+    }
+}
+
+export async function getMovieByUserid (req: Request, res: Response) {
+    const { id } = req.params;
+
+    try {
+        const allUserMovies = await findAllMoviesById(Number(id));
+        res.send(allUserMovies);
     } catch(error){
         return res.status(500).send(error.message)
     }

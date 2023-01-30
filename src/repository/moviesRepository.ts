@@ -28,14 +28,6 @@ async function findAllMovies() {
     return await prisma.movies.findMany();
 }
 
-async function findMovieByGenre(genre: string) {
-    return prisma.movies.findFirst({
-        where: {
-            genre
-        }
-    })
-}
-
 async function deleteMovieById(id: number) {
     return prisma.movies.delete({
         where: {
@@ -44,10 +36,21 @@ async function deleteMovieById(id: number) {
     })
 }
 
+async function findAllMoviesById(id: number) {
+    return prisma.users.findMany({
+        where: {
+            id: id
+        },
+        include: {
+            movies: true
+        }
+    })
+}
+
 export {
     findAllMovies,
     insertMovie,
     updateMovie,
-    findMovieByGenre,
-    deleteMovieById
+    deleteMovieById,
+    findAllMoviesById
 }
