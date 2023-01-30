@@ -1,10 +1,17 @@
 import prisma from "../database/db.js"
 import { Movie } from "../protocols/Movie.js";
-import { QueryResult } from "pg";
 
 async function insertMovie(movie: Movie) {
    return await prisma.movies.create({
-    data: movie
+    data: {
+    genre: movie.genre,
+    name: movie.name,
+    platform: movie.platform,
+    description: movie.description,
+    watched: movie.watched,
+    entity: movie.entity,
+    userid: movie.userid,
+    }
    })
 }
 
