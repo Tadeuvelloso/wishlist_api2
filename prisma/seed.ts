@@ -1,6 +1,10 @@
 import prisma from "../src/database/db.js";
 
 async function main() {
+    await prisma.users.create({
+        data: {"email": "teste@teste.com", "password": "teste"}
+    })
+
     await prisma.movies.createMany({
         data: [
             {     
@@ -9,7 +13,8 @@ async function main() {
             "platform": "netflix",
             "description": "não recomendo para pessoas com problemas cardíacos",
             "watched": true,
-            "entity": "filme"
+            "entity": "filme",
+            "userid": 1
             },
             { 
             "genre": "comédia",
@@ -17,7 +22,8 @@ async function main() {
             "platform": "globo-play",
             "description": "",
             "watched": false,
-            "entity": "filme"
+            "entity": "filme",
+            "userid": 1
             },
             {
             "genre": "suspênse",
@@ -25,7 +31,8 @@ async function main() {
             "platform": "amazon prime",
             "description": "",
             "watched": false,
-            "entity": "filme"
+            "entity": "filme",
+            "userid": 1
             }
         ]
     })
