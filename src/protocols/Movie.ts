@@ -4,6 +4,7 @@ export type Movie = {
     platform: string,
     description?: string,
     watched: boolean,
-    entity: string
+    entity: string,
+    userid: number
 }
 
